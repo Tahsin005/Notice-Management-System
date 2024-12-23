@@ -1,0 +1,4 @@
+.scrollable-post-div::-webkit-scrollbar
+{
+    scrollbar-width: none;
+}
