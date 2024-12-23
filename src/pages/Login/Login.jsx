@@ -23,7 +23,6 @@ const Login = ({ setIsLogedIn }) => {
 
     if (studentId) {
       console.log(studentId);
-      // return;
     }
 
     setIsLoading(true);
