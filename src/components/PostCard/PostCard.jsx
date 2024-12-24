@@ -4,6 +4,7 @@ import assIcon from "../../assets/images/assignment_icon.png";
 import courseIcon from "../../assets/images/course_icon.png";
 import bellIcon from "../../assets/images/bell_icon.png";
 import linkIcon from "../../assets/images/LinkIcon.png";
+import { SiGoogleclassroom } from "react-icons/si";
 const PostCard = ({ ct }) => {
   // console.log("here");
   // console.log(ct);
@@ -22,7 +23,7 @@ const PostCard = ({ ct }) => {
       </div>
       <div className="car-details">
         {ct?.notice_type === "classroom_code" ? (
-          <p className="font-bold text-3xl xl:text-5xl text-black">{ct?.description}</p>
+          <p className="text-3xl font-bold text-black xl:text-5xl">{ct?.description}</p>
         ) : (
           <div className="text-sm md:text-[1rem]">
             {ct?.description.length > descLength
@@ -38,17 +39,21 @@ const PostCard = ({ ct }) => {
 
       {ct?.resource_link ? (
         ct?.notice_type == "classroom_code" ? (
-          <button className="self-start text-lg xl:text-xl text-white font-sans rounded bg-[#2E90FA] p-1 xl:p-2">
+          <a href={ct?.resource_link} target="_blank">
+            <button className="self-start text-lg xl:text-xl text-white font-sans rounded bg-[#2E90FA] p-1 xl:p-2">
             Join Classroom
           </button>
+          </a>
         ) : (
-          <div className="attched-file-link flex gap-1 items-center justify-start max-w-72 p-1 text-[#2E90FA]">
+          <a href={ct?.resource_link}  target="_blank">
+            <div className="attched-file-link flex gap-1 items-center justify-start max-w-72 p-1 text-[#2E90FA]">
             <img className="h-[24px] w-[24px]" src={linkIcon} alt={linkIcon} />
             <p>{`View attached files`}</p>
           </div>
+          </a>
         )
       ) : null}
-      <div className="post-type-course-name flex gap-3">
+      <div className="flex gap-3 post-type-course-name">
         <div
           className={`assignment flex gap-2 xl:gap-3 ${
             ct?.notice_type == "classroom_code"
@@ -57,7 +62,7 @@ const PostCard = ({ ct }) => {
           }  p-1 xl:p-2 items-center rounded justify-center`}
         >
           {ct?.notice_type == "classroom_code" ? (
-            <img src={linkIcon} />
+            <SiGoogleclassroom />
           ) : (
             <img src={assIcon} alt={assIcon} />
           )}
@@ -68,7 +73,7 @@ const PostCard = ({ ct }) => {
               .join(" ")}
           </p>
         </div>
-        <div className="course-name flex gap-1 border border-black p-1 rounded items-center">
+        <div className="flex items-center gap-1 p-1 border border-black rounded course-name">
           <img
             className=""
             src={courseIcon}
